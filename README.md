@@ -2,6 +2,8 @@
 
 An offline detector for loop pathologies in recorded agent trajectories: stasis (the same step emitted over and over), exact repeats within a sliding window, and oscillation cycles (A,B,A,B,…), each finding paired with a circuit-breaker suggestion. Analyze after the fact — no runtime hooking. Pure standard library, single file, offline. *Adjacent to runtime anti-loop toolkits, not equivalent to them.*
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Agents get stuck: the same tool call with the same arguments fires 40 times, or two tools take turns failing, and the only signal today is the token bill. Runtime guards can catch this live, but CI pipelines, replay harnesses, and postmortems need the reverse direction — take a trajectory JSON that already happened and answer "did it loop, where, and should the runner have halted?" No standalone checker covers that offline analysis surface.
